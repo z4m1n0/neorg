@@ -273,8 +273,6 @@ module.config.public = {
             affect = "background",
         },
     },
-
-    generate_shorthands = true,
 }
 
 module.load = function()
@@ -289,44 +287,6 @@ module.load = function()
 
     module.required["core.highlights"].add_highlights(module.config.public.highlights)
     module.required["core.highlights"].add_dim(module.config.public.dim)
-
-    --[[
-		The below code snippet collects all language shorthands and links them to
-		their parent language, e.g.:
-		"hs" links to the "haskell" TreeSitter parser
-		"c++" links to the "cpp" TreeSitter parser
-
-		And so on.
-		Injections are generated dynamically
-	--]]
-
-    if module.config.public.generate_shorthands then
-        local injections = {}
-
-        -- TEMPORARILY COMMENTED OUT
-        -- This sort of language shorthand stuff does not actually work (seemingly because there are too many queries for TS to parse?)
-        -- We'll be removing this until further notice
-        -- local langs = require("neorg.external.helpers").get_language_shorthands(false)
-
-        --
-        -- for language, shorthands in pairs(langs) do
-        --     for _, shorthand in ipairs(shorthands) do
-        --         table.insert(
-        --             injections,
-        --             (
-        --                 [[(ranged_tag (tag_name) @_tagname (tag_parameters (word) @_language) (ranged_tag_content) @%s (#eq? @_tagname "code") (#eq? @_language "%s"))]]
-        --             ):format(language, shorthand)
-        --         )
-        --     end
-        -- end
-
-        -- table.insert(
-        --     injections,
-        --     [[(ranged_tag (tag_name) @_tagname (tag_parameters (word) @language) (ranged_tag_content) @content (#eq? @_tagname "code"))]]
-        -- )
-
-        -- vim.treesitter.set_query("norg", "injections", table.concat(injections, "\n"))
-    end
 end
 
 module.public = {
@@ -634,7 +594,7 @@ module.public = {
             return nil
         end
 
-        return text[1]
+        return #text == 1 and text[1] or table.concat(text, "\n")
     end,
 }
 

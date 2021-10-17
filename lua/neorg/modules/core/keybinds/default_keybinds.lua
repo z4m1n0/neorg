@@ -33,7 +33,11 @@ module.public = {
                     { "<M-k>", "core.norg.manoeuvre.item_up" },
                     { "<M-j>", "core.norg.manoeuvre.item_down" },
 
-                    { ">>", "core.norg.esupports.promo.promote" }
+                    { ">>", "core.norg.esupports.promo.promote-recursive" },
+                    { "<<", "core.norg.esupports.promo.demote-recursive" },
+
+                    { ">.", "core.norg.esupports.promo.promote" },
+                    { "<,", "core.norg.esupports.promo.demote" },
                 },
 
                 i = {

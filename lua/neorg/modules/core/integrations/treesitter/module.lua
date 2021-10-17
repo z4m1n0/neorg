@@ -16,263 +16,279 @@ module.setup = function()
     return { success = true, requires = { "core.highlights", "core.mode", "core.keybinds" } }
 end
 
-module.config.public = {
-    highlights = {
-        Tag = {
-            -- The + tells neorg to link to an existing hl
-            Begin = "+TSKeyword",
+module.config = {
+    public = {
+        highlights = {
+            Tag = {
+                -- The + tells neorg to link to an existing hl
+                Begin = "+TSKeyword",
 
-            -- Supply any arguments you would to :highlight here
-            -- Example: ["end"] = "guifg=#93042b",
-            ["End"] = "+TSKeyword",
+                -- Supply any arguments you would to :highlight here
+                -- Example: ["end"] = "guifg=#93042b",
+                ["End"] = "+TSKeyword",
 
-            Name = {
-                [""] = "+Normal",
-                Word = "+TSKeyword",
+                Name = {
+                    [""] = "+Normal",
+                    Word = "+TSKeyword",
+                },
+
+                Parameter = "+TSType",
+                Content = "+Normal",
             },
 
-            Parameter = "+TSType",
-            Content = "+Normal",
-        },
+            CarryoverTag = {
+                Begin = "+TSLabel",
 
-        CarryoverTag = {
-            Begin = "+TSLabel",
+                Name = {
+                    [""] = "+Normal",
+                    Word = "+TSLabel",
+                },
 
-            Name = {
-                [""] = "+Normal",
-                Word = "+TSLabel",
+                Parameter = "+TSString",
             },
 
-            Parameter = "+TSString",
-        },
-
-        Heading = {
-            ["1"] = {
-                Title = "+TSAttribute",
-                Prefix = "+TSAttribute",
-            },
-            ["2"] = {
-                Title = "+TSLabel",
-                Prefix = "+TSLabel",
-            },
-            ["3"] = {
-                Title = "+TSMath",
-                Prefix = "+TSMath",
-            },
-            ["4"] = {
-                Title = "+TSString",
-                Prefix = "+TSString",
-            },
-            ["5"] = {
-                Title = "+TSLabel",
-                Prefix = "+TSLabel",
-            },
-            ["6"] = {
-                Title = "+TSMath",
-                Prefix = "+TSMath",
-            },
-        },
-
-        Error = "+TSError",
-
-        Marker = {
-            [""] = "+TSLabel",
-            Title = "+Normal",
-        },
-
-        Definition = {
-            [""] = "+TSPunctDelimiter",
-            End = "+TSPunctDelimiter",
-            Title = "+TSStrong",
-            -- TODO: figure out odd highlighting of ranged tag when using TSNone
-            Content = "+TSEmphasis",
-        },
-
-        EscapeSequence = "+TSType",
-
-        TodoItem = {
-            ["1"] = {
-                [""] = "+NeorgUnorderedList1",
-
-                Undone = "+TSPunctDelimiter",
-                Pending = "+TSNamespace",
-                Done = "+TSString",
-            },
-            ["2"] = {
-                [""] = "+NeorgUnorderedList2",
-
-                Undone = "+TSPunctDelimiter",
-                Pending = "+TSNamespace",
-                Done = "+TSString",
-            },
-            ["3"] = {
-                [""] = "+NeorgUnorderedList3",
-
-                Undone = "+TSPunctDelimiter",
-                Pending = "+TSNamespace",
-                Done = "+TSString",
-            },
-            ["4"] = {
-                [""] = "+NeorgUnorderedList4",
-
-                Undone = "+TSPunctDelimiter",
-                Pending = "+TSNamespace",
-                Done = "+TSString",
-            },
-            ["5"] = {
-                [""] = "+NeorgUnorderedList5",
-
-                Undone = "+TSPunctDelimiter",
-                Pending = "+TSNamespace",
-                Done = "+TSString",
-            },
-            ["6"] = {
-                [""] = "+NeorgUnorderedList6",
-
-                Undone = "+TSPunctDelimiter",
-                Pending = "+TSNamespace",
-                Done = "+TSString",
-            },
-        },
-
-        Unordered = {
-            List = {
+            Heading = {
                 ["1"] = {
-                    [""] = "+TSPunctDelimiter",
+                    Title = "+TSAttribute",
+                    Prefix = "+TSAttribute",
                 },
                 ["2"] = {
-                    [""] = "+TSPunctDelimiter",
+                    Title = "+TSLabel",
+                    Prefix = "+TSLabel",
                 },
                 ["3"] = {
-                    [""] = "+TSPunctDelimiter",
+                    Title = "+TSMath",
+                    Prefix = "+TSMath",
                 },
                 ["4"] = {
-                    [""] = "+TSPunctDelimiter",
+                    Title = "+TSString",
+                    Prefix = "+TSString",
                 },
                 ["5"] = {
-                    [""] = "+TSPunctDelimiter",
+                    Title = "+TSLabel",
+                    Prefix = "+TSLabel",
                 },
                 ["6"] = {
-                    [""] = "+TSPunctDelimiter",
+                    Title = "+TSMath",
+                    Prefix = "+TSMath",
                 },
             },
 
-            Link = {
+            Error = "+TSError",
+
+            Marker = {
+                [""] = "+TSLabel",
+                Title = "+Normal",
+            },
+
+            Definition = {
+                [""] = "+TSPunctDelimiter",
+                End = "+TSPunctDelimiter",
+                Title = "+TSStrong",
+                -- TODO: figure out odd highlighting of ranged tag when using TSNone
+                Content = "+TSEmphasis",
+            },
+
+            EscapeSequence = "+TSType",
+
+            TodoItem = {
                 ["1"] = {
                     [""] = "+NeorgUnorderedList1",
+
+                    Undone = "+TSPunctDelimiter",
+                    Pending = "+TSNamespace",
+                    Done = "+TSString",
                 },
                 ["2"] = {
                     [""] = "+NeorgUnorderedList2",
+
+                    Undone = "+TSPunctDelimiter",
+                    Pending = "+TSNamespace",
+                    Done = "+TSString",
                 },
                 ["3"] = {
                     [""] = "+NeorgUnorderedList3",
+
+                    Undone = "+TSPunctDelimiter",
+                    Pending = "+TSNamespace",
+                    Done = "+TSString",
                 },
                 ["4"] = {
                     [""] = "+NeorgUnorderedList4",
+
+                    Undone = "+TSPunctDelimiter",
+                    Pending = "+TSNamespace",
+                    Done = "+TSString",
                 },
                 ["5"] = {
                     [""] = "+NeorgUnorderedList5",
+
+                    Undone = "+TSPunctDelimiter",
+                    Pending = "+TSNamespace",
+                    Done = "+TSString",
                 },
                 ["6"] = {
                     [""] = "+NeorgUnorderedList6",
+
+                    Undone = "+TSPunctDelimiter",
+                    Pending = "+TSNamespace",
+                    Done = "+TSString",
                 },
             },
-        },
 
-        Ordered = {
-            List = {
+            Unordered = {
+                List = {
+                    ["1"] = {
+                        [""] = "+TSPunctDelimiter",
+                    },
+                    ["2"] = {
+                        [""] = "+TSPunctDelimiter",
+                    },
+                    ["3"] = {
+                        [""] = "+TSPunctDelimiter",
+                    },
+                    ["4"] = {
+                        [""] = "+TSPunctDelimiter",
+                    },
+                    ["5"] = {
+                        [""] = "+TSPunctDelimiter",
+                    },
+                    ["6"] = {
+                        [""] = "+TSPunctDelimiter",
+                    },
+                },
+
+                Link = {
+                    ["1"] = {
+                        [""] = "+NeorgUnorderedList1",
+                    },
+                    ["2"] = {
+                        [""] = "+NeorgUnorderedList2",
+                    },
+                    ["3"] = {
+                        [""] = "+NeorgUnorderedList3",
+                    },
+                    ["4"] = {
+                        [""] = "+NeorgUnorderedList4",
+                    },
+                    ["5"] = {
+                        [""] = "+NeorgUnorderedList5",
+                    },
+                    ["6"] = {
+                        [""] = "+NeorgUnorderedList6",
+                    },
+                },
+            },
+
+            Ordered = {
+                List = {
+                    ["1"] = {
+                        [""] = "+TSRepeat",
+                    },
+                    ["2"] = {
+                        [""] = "+TSRepeat",
+                    },
+                    ["3"] = {
+                        [""] = "+TSRepeat",
+                    },
+                    ["4"] = {
+                        [""] = "+TSRepeat",
+                    },
+                    ["5"] = {
+                        [""] = "+TSRepeat",
+                    },
+                    ["6"] = {
+                        [""] = "+TSRepeat",
+                    },
+                },
+
+                Link = {
+                    ["1"] = {
+                        [""] = "+NeorgOrderedList1",
+                    },
+                    ["2"] = {
+                        [""] = "+NeorgOrderedList2",
+                    },
+                    ["3"] = {
+                        [""] = "+NeorgOrderedList3",
+                    },
+                    ["4"] = {
+                        [""] = "+NeorgOrderedList4",
+                    },
+                    ["5"] = {
+                        [""] = "+NeorgOrderedList5",
+                    },
+                    ["6"] = {
+                        [""] = "+NeorgOrderedList6",
+                    },
+                },
+            },
+
+            Quote = {
                 ["1"] = {
-                    [""] = "+TSRepeat",
+                    [""] = "+TSPunctDelimiter",
+                    Content = "+TSPunctDelimiter",
                 },
                 ["2"] = {
-                    [""] = "+TSRepeat",
+                    [""] = "+Blue",
+                    Content = "+Blue",
                 },
                 ["3"] = {
-                    [""] = "+TSRepeat",
+                    [""] = "+Yellow",
+                    Content = "+Yellow",
                 },
                 ["4"] = {
-                    [""] = "+TSRepeat",
+                    [""] = "+Red",
+                    Content = "+Red",
                 },
                 ["5"] = {
-                    [""] = "+TSRepeat",
+                    [""] = "+Green",
+                    Content = "+Green",
                 },
                 ["6"] = {
-                    [""] = "+TSRepeat",
+                    [""] = "+Brown",
+                    Content = "+Brown",
                 },
             },
 
-            Link = {
-                ["1"] = {
-                    [""] = "+NeorgOrderedList1",
+            Insertion = {
+                [""] = "cterm=bold gui=bold",
+                Prefix = "+TSPunctDelimiter",
+                Variable = {
+                    [""] = "+TSString",
+                    Value = "+TSPunctDelimiter",
                 },
-                ["2"] = {
-                    [""] = "+NeorgOrderedList2",
-                },
-                ["3"] = {
-                    [""] = "+NeorgOrderedList3",
-                },
-                ["4"] = {
-                    [""] = "+NeorgOrderedList4",
-                },
-                ["5"] = {
-                    [""] = "+NeorgOrderedList5",
-                },
-                ["6"] = {
-                    [""] = "+NeorgOrderedList6",
-                },
+                Item = "+TSNamespace",
+                Parameters = "+TSComment",
             },
+
+            StrongParagraphDelimiter = "+TSPunctDelimiter",
+            WeakParagraphDelimiter = "+TSPunctDelimiter",
+            HorizontalLine = "+TSPunctDelimiter",
         },
 
-        Quote = {
-            ["1"] = {
-                [""] = "+TSPunctDelimiter",
-                Content = "+TSPunctDelimiter",
+        dim = {
+            CodeBlock = {
+                reference = "Normal",
+                percentage = 15,
+                affect = "background",
             },
-            ["2"] = {
-                [""] = "+Blue",
-                Content = "+Blue",
-            },
-            ["3"] = {
-                [""] = "+Yellow",
-                Content = "+Yellow",
-            },
-            ["4"] = {
-                [""] = "+Red",
-                Content = "+Red",
-            },
-            ["5"] = {
-                [""] = "+Green",
-                Content = "+Green",
-            },
-            ["6"] = {
-                [""] = "+Brown",
-                Content = "+Brown",
-            },
-        },
-
-        Insertion = {
-            [""] = "cterm=bold gui=bold",
-            Prefix = "+TSPunctDelimiter",
-            Variable = {
-                [""] = "+TSString",
-                Value = "+TSPunctDelimiter",
-            },
-            Item = "+TSNamespace",
-            Parameters = "+TSComment",
-        },
-
-        StrongParagraphDelimiter = "+TSPunctDelimiter",
-        WeakParagraphDelimiter = "+TSPunctDelimiter",
-        HorizontalLine = "+TSPunctDelimiter",
-    },
-
-    dim = {
-        CodeBlock = {
-            reference = "Normal",
-            percentage = 15,
-            affect = "background",
         },
     },
+
+    private = {
+        whole_nodes = {
+            "unordered_list%d+",
+            "unordered_link%d+",
+            "ordered_list%d+",
+            "ordered_link%d+",
+            "heading%d+",
+            "todo_item%d+",
+            "(strong|weak)_paragraph_delimiter",
+            "quote%d+",
+            "insertion",
+        }
+    }
 }
 
 module.load = function()
@@ -595,6 +611,19 @@ module.public = {
         end
 
         return #text == 1 and text[1] or table.concat(text, "\n")
+    end,
+
+    -- TODO: Docs
+    get_whole_node = function(node)
+        while node do
+            for _, full_node_type in ipairs(module.config.private.whole_nodes) do
+                if node:type():match("^" .. full_node_type .. "$") then
+                    return node
+                end
+            end
+
+            node = node:parent()
+        end
     end,
 }
 

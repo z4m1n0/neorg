@@ -98,7 +98,8 @@ module.private = {
                         selection:push_page()
                         selection
                             :title("Custom Date")
-                            :text("Allowed date format: today, tomorrow, Xw, Xd, Xm (X is a number)")
+                            :text("Allowed date format: today, tomorrow, Xw, Xd, Xm, Xy (X is a number)")
+                            :text("You can even use 'mon', 'tue', 'wed' ... for the next weekday date")
                             :blank()
                             :prompt("Enter date", {
                                 callback = function(text)

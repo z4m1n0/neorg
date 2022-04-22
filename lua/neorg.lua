@@ -19,9 +19,9 @@ function neorg.setup(config)
     -- Create a new global instance of the neorg logger
     require("neorg.external.log").new(configuration.user_configuration.logger or log.get_default_config(), true)
 
-    -- If the file we have entered has a .norg extension
-    if vim.fn.expand("%:e") == "norg" then
-        -- Then set the filetype and boot up the environment
+    -- If the buffer we have entered has the filetype "norg"
+    if vim.tbl_contains(vim.split(vim.bo.filetype, ".", {plain=true}), "norg") then
+        -- Then boot up the environment
         neorg.org_file_entered(false)
     else
         -- Else listen for a BufRead event and fire up the Neorg environment

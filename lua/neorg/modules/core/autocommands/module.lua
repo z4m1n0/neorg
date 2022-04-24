@@ -66,26 +66,33 @@ module.public = {
         local subscribed_autocommand = module.events.subscribed["core.autocommands"][autocmd]
 
         if subscribed_autocommand ~= nil then
-            vim.cmd("augroup Neorg")
 
-            if dont_isolate and vim.fn.exists("#Neorg#" .. autocmd .. "#*") == 0 then
-                vim.cmd(
-                    "autocmd "
-                        .. autocmd
-                        .. ' * :lua _neorg_module_autocommand_triggered("core.autocommands.events.'
-                        .. autocmd
-                        .. '", false)'
-                )
-            elseif vim.fn.exists("#Neorg#" .. autocmd .. "#*.norg") == 0 then
-                vim.cmd(
-                    "autocmd "
-                        .. autocmd
-                        .. ' *.norg :lua _neorg_module_autocommand_triggered("core.autocommands.events.'
-                        .. autocmd
-                        .. '", true)'
-                )
+            if dont_isolate then
+                if vim.fn.exists("#NeorgGlobal#" .. autocmd .. "#*") == 0 then
+                    vim.cmd("augroup NeorgGlobal")
+                    vim.cmd(
+                        "autocmd "
+                            .. autocmd
+                            .. ' * :lua _neorg_module_autocommand_triggered("core.autocommands.events.'
+                            .. autocmd
+                            .. '", false)'
+                    )
+                    vim.cmd("augroup END")
+                end
+            else
+                if vim.fn.exists("#Neorg#" .. autocmd .. "#*") == 0 then
+                    vim.cmd("augroup Neorg")
+                    vim.cmd(
+                        "autocmd "
+                            .. autocmd
+                            .. ' * :lua if require("neorg").has_ft_norg() then _neorg_module_autocommand_triggered("core.autocommands.events.'
+                            .. autocmd
+                            .. '", true) end'
+                    )
+                    vim.cmd("augroup END")
+                end
             end
-            vim.cmd("augroup END")
+
             module.events.subscribed["core.autocommands"][autocmd] = true
         end
     end,
